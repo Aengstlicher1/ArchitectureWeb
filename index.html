@@ -15,9 +15,17 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; text-wrap: pretty; overflow-x: clip; }
+.viewport-vignette { position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 70%, color-mix(in srgb, var(--color-bg) 55%, transparent) 100%); }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
 .nav { padding-inline: max(var(--edge), calc((100% - 1200px) / 2 + var(--edge))); position: sticky; top: 0;
-  background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(6px); z-index: 10; }
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(6px); z-index: 60; }
+.nav::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 72px; pointer-events: none;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--color-bg) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 70%, transparent) 30%,
+    color-mix(in srgb, var(--color-bg) 35%, transparent) 60%,
+    transparent 100%); }
 .nav a { white-space: nowrap; }
 .nav .btn { white-space: nowrap; }
 @media (max-width: 640px) { .nav a { display: none; } }
@@ -52,14 +60,12 @@ body { margin: 0; text-wrap: pretty; overflow-x: clip; }
   background: color-mix(in srgb, var(--color-text) 18%, transparent);
   transition: width 0.3s ease, background 0.3s ease, transform 0.2s ease; }
 .hero-dot:hover { transform: scale(1.15); }
-.hero-dot[aria-current="true"] { width: 38px; border-radius: 999px; background: var(--color-accent); }
+.hero-dot[aria-current="true"] { width: 38px; border-radius: 999px; background: color-mix(in srgb, var(--color-accent) 28%, transparent); }
 .hero-dot { position: relative; overflow: hidden; }
 .hero-dot::after { content: ""; position: absolute; inset: 0; border-radius: inherit;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-accent-300) 85%, transparent), transparent);
-  transform: translateX(-100%); }
-.hero-dot:not([aria-current="true"])::after { display: none; }
-.hero-dot.sweep::after { animation: dotSweep 5s ease-in-out; }
-@keyframes dotSweep { to { transform: translateX(100%); } }
+  background: var(--color-accent); transform-origin: left center; transform: scaleX(0); }
+.hero-dot.filling::after { animation: dotFill 5s linear forwards; }
+@keyframes dotFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .hero-inner { padding: calc(2 * var(--leading)) var(--edge) calc(1.5 * var(--leading)); width: 100%;
   max-width: 1200px; margin: 0 auto; box-sizing: border-box; }
 .display {
@@ -225,6 +231,7 @@ html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max
 </style>
 </head>
 <body>
+<div class="viewport-vignette"></div>
 <nav class="nav">
   <a href="index.html" class="nav-brand" style="text-decoration:none;color:inherit;">[COMPANY NAME]</a>
   <a href="#work">Work</a>
@@ -333,7 +340,7 @@ html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max
       <p class="sub">Tell us about the site and what you have in mind. We take on a small number of projects at a time, so an early conversation is the best place to start.</p>
       <div class="row">
         <button type="button" class="btn btn-primary">Start a project</button>
-        <button type="button" class="btn btn-ghost">Book a consultation</button>
+        <a href="mailto:studio@companyname.mt?subject=Consultation%20request" class="btn btn-ghost">Book a consultation</a>
       </div>
     </div>
   </section>
@@ -376,7 +383,14 @@ html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max
   const dots = [...dotsWrap.children];
   let active = 0, timer, isSyncing = false;
 
-  function setDot(i) { dots.forEach((d, di) => d.setAttribute('aria-current', String(di === i))); }
+  function setDot(i) {
+    dots.forEach((d, di) => {
+      d.setAttribute('aria-current', String(di === i));
+      d.classList.remove('filling');
+    });
+    void dots[i].offsetWidth;
+    dots[i].classList.add('filling');
+  }
 
   function goTo(i, instant) {
     active = i;
@@ -402,7 +416,7 @@ html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   const revealEls = [...document.querySelectorAll('.reveal, .reveal-stagger')];
@@ -417,12 +431,6 @@ html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max
   checkFallback();
   window.addEventListener('scroll', checkFallback, { passive: true });
   window.addEventListener('resize', checkFallback);
-
-  dots.forEach(d => {
-    d.classList.add('sweep');
-    d.addEventListener('animationend', () => d.classList.remove('sweep'));
-  });
-  setInterval(() => dots.forEach(d => { d.classList.remove('sweep'); void d.offsetWidth; d.classList.add('sweep'); }), 5000);
 
   document.querySelectorAll('.btn-primary').forEach(btn => {
     function edgeOffset(e) {
