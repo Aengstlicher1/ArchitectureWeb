@@ -1,0 +1,28 @@
+{
+  "slug": "dar-tal-mina",
+  "name": "Dar tal-Mina",
+  "location": "Mdina",
+  "locationKey": "mdina",
+  "type": "Renovation",
+  "typeKey": "renovation",
+  "year": 2022,
+  "size": "245 m²",
+  "scope": "Renovation, Interiors",
+  "featured": true,
+  "cardImage": { "id": "card-dar-tal-mina", "alt": "Dar tal-Mina, a renovated townhouse in Mdina" },
+  "detail": {
+    "tagline": "A silent-city townhouse restored room by room, without losing its quiet.",
+    "heroImage": { "id": "hero-dar-tal-mina", "alt": "Dar tal-Mina courtyard entrance in Mdina" },
+    "narrative": [
+      "Behind Mdina's walls, this townhouse had been divided and subdivided across three generations. The renovation began by reading the original plan in the stonework — door heads, blocked archways, the ghost of a staircase — and rebuilt the layout around what the house had always wanted to be.",
+      "New services run invisibly through service risers cut behind existing openings, so no ceiling in the original rooms had to come down. Where plaster had failed beyond repair, it was replaced in lime, matched by hand to the tone of what remained.",
+      "The result reads as barely touched — which was the point. A house four centuries old shouldn't announce the year it was renovated."
+    ],
+    "gallery": [
+      { "id": "gal-dar-tal-mina-1", "alt": "Restored internal courtyard", "wide": true },
+      { "id": "gal-dar-tal-mina-2", "alt": "Original stone archway retained" },
+      { "id": "gal-dar-tal-mina-3", "alt": "Living room with lime-plastered walls" },
+      { "id": "gal-dar-tal-mina-4", "alt": "Restored timber balcony detail" }
+    ]
+  }
+}

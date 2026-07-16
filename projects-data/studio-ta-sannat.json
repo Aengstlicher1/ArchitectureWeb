@@ -1,0 +1,27 @@
+{
+  "slug": "studio-ta-sannat",
+  "name": "Studio Ta' Sannat",
+  "location": "Gozo",
+  "locationKey": "gozo",
+  "type": "Commercial",
+  "typeKey": "commercial",
+  "year": 2020,
+  "size": "140 m²",
+  "scope": "Commercial Fit-out",
+  "featured": false,
+  "cardImage": { "id": "card-studio-ta-sannat", "alt": "A small commercial studio fit-out in Ta' Sannat, Gozo" },
+  "detail": {
+    "tagline": "A small pottery studio and shop front, fitted into a converted farm building.",
+    "heroImage": { "id": "hero-studio-ta-sannat", "alt": "Studio Ta' Sannat shopfront, Gozo" },
+    "narrative": [
+      "A retired farm building on the edge of Ta' Sannat was converted into a working studio and small retail front for a local ceramicist. The brief asked for daylight over display lighting wherever possible.",
+      "A single large opening was cut into the north wall — the only orientation that gave even light through the day — glazed in slim steel to keep the original stone reveal visible from both sides.",
+      "Fixtures throughout are simple and adjustable, built to be reconfigured as the maker's own work changes over time."
+    ],
+    "gallery": [
+      { "id": "gal-studio-ta-sannat-1", "alt": "Studio interior with north-light window", "wide": true },
+      { "id": "gal-studio-ta-sannat-2", "alt": "Retail display fixtures" },
+      { "id": "gal-studio-ta-sannat-3", "alt": "Original stone reveal detail" }
+    ]
+  }
+}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Villa Rdum — [COMPANY NAME]</title>
+<script src="./ds-base.js"></script>
+<style>
+:root {
+  --leading: 28px;
+  --half: 14px;
+  --edge: clamp(20px, 5vw, 72px);
+  --measure: 58ch;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; text-wrap: pretty; overflow-x: clip; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1200px) / 2 + var(--edge))); position: sticky; top: 0;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(6px); z-index: 10; }
+.nav a { white-space: nowrap; }
+@media (max-width: 640px) { .nav a { display: none; } }
+.kicker {
+  display: block; font-size: 13px; line-height: var(--half);
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  color: var(--color-accent-700);
+  margin: 0 0 calc(var(--leading) - var(--half));
+}
+
+/* — project hero — */
+.p-hero { position: relative; margin-top: calc(-1 * var(--leading)); height: 480px; }
+.p-hero image-slot { width: 100%; height: 100%; }
+
+/* — header block — */
+.p-head { padding: calc(2 * var(--leading)) 0 var(--leading);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: var(--leading) clamp(24px, 4vw, 72px); align-items: start; }
+.p-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: clamp(32px, 4vw, 48px); line-height: calc(1.4 * var(--leading)); margin: 0; }
+.p-loc { font-size: 16px; color: color-mix(in srgb, var(--color-text) 65%, transparent); margin: var(--half) 0 0; }
+.p-facts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--half) var(--space-3);
+  background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--leading); }
+.p-facts dt { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 0; }
+.p-facts dd { font-size: 15px; margin: 2px 0 0; font-weight: 600; }
+
+/* — narrative — */
+.p-narrative { padding: var(--leading) 0 calc(2.5 * var(--leading)); }
+.p-narrative p { font-size: 16px; line-height: var(--leading); max-width: var(--measure); margin: 0 0 var(--leading);
+  color: color-mix(in srgb, var(--color-text) 85%, transparent); }
+.p-narrative p:last-child { margin-bottom: 0; }
+
+/* — gallery — */
+.gallery { padding: 0 0 calc(3 * var(--leading)); display: grid; gap: clamp(16px, 2vw, 28px);
+  grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gallery figure { margin: 0; border-radius: var(--radius-lg); overflow: hidden; }
+.gallery image-slot { width: 100%; height: 100%; aspect-ratio: 4 / 3; }
+.gallery .wide { grid-column: 1 / -1; }
+.gallery .wide image-slot { aspect-ratio: 16 / 9; }
+
+/* — next project — */
+.next { padding: 0 0 calc(3 * var(--leading)); border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  padding-top: var(--leading); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--half); }
+.next a { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: 22px; }
+
+footer { padding: calc(2 * var(--leading)) 0; display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--leading); font-size: 13px; line-height: var(--leading);
+  color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+footer .col { min-width: 180px; }
+footer .col-title { font-weight: 600; color: var(--color-text); margin-bottom: 6px; }
+footer a { color: inherit; }
+
+a { color: var(--color-accent-700); text-decoration: none; }
+a:hover { color: var(--color-accent-800); text-decoration: underline; }
+
+.btn-primary { box-shadow: 0 0 22px color-mix(in srgb, var(--color-accent) 34%, transparent); background: transparent !important; }
+.btn-primary:hover, .btn-primary:active { box-shadow: 0 0 22px color-mix(in srgb, var(--color-accent-600) 38%, transparent); background: transparent !important; }
+a.btn:hover, a.btn-primary:hover { text-decoration: none; }
+a.btn-primary:hover { color: var(--color-bg); }
+a.btn-secondary:hover, a.btn-ghost:hover { color: var(--color-text); }
+#search-overlay { opacity: 0; transition: opacity 0.28s ease; }
+#search-overlay.open { opacity: 1; }
+#search-overlay .search-outer { transform-origin: top center; transform: scaleY(0.82) rotate(-0.5deg);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1); }
+#search-overlay .search-inner { transform-origin: center; transform: scaleX(0.82);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) 0.07s; }
+#search-overlay.open .search-outer { transform: scaleY(1) rotate(0deg); }
+#search-overlay.open .search-inner { transform: scaleX(1); }
+#nav-search-btn { border-radius: 999px; transition: background 0.2s ease, color 0.2s ease; }
+#nav-search-btn:hover { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-accent-700); }
+
+.btn-primary { position: relative; color: var(--color-accent-700);
+  border: 1.5px solid var(--color-accent); overflow: hidden; z-index: 0; transition: color 0.35s ease 0.05s;
+  white-space: nowrap; --fx: 0%; --fy: 100%; }
+.btn-primary::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: 6px;
+  background: var(--color-accent); transform: translate(var(--fx), var(--fy)); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.4s ease; }
+.btn-primary.fill-in { color: var(--color-bg); }
+.btn-primary.fill-in::before { transform: translate(0, 0); border-radius: inherit; }
+a.btn-primary:hover { color: var(--color-bg); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 780px) {
+  .p-head { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery .wide { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand" style="text-decoration:none;color:inherit;">[COMPANY NAME]</a>
+  <a href="work.html">Work</a>
+  <a href="index.html#studio">Studio</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#contact">Contact</a>
+  <button type="button" class="btn btn-primary">Start a project</button>
+  <button type="button" class="btn btn-icon" id="nav-search-btn" aria-label="Search the site (⌘/Ctrl + Space)" title="Search (⌘/Ctrl + Space)" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </button>
+</nav>
+
+<div id="search-overlay" style="display:none; position:fixed; inset:0; z-index:200; background:color-mix(in srgb, var(--color-neutral-900) 55%, transparent); backdrop-filter:blur(2px); align-items:flex-start; justify-content:center;">
+ <div class="search-outer" style="width:100%; max-width:640px; margin:12vh 0 0;">
+  <div class="search-inner" style="background:var(--color-bg); border-radius:var(--radius-lg); padding:var(--space-3); box-shadow:var(--shadow-lg);">
+    <input type="search" id="site-search-input" placeholder="Search projects, services, pages…" aria-label="Search the site"
+      style="width:100%; box-sizing:border-box; font-size:18px; font-family:var(--font-body); padding:12px 14px; border:1px solid var(--color-divider); border-radius:var(--radius-md); background:var(--color-surface); color:var(--color-text);" />
+    <div id="site-search-results" style="margin-top:var(--half); max-height:50vh; overflow-y:auto; scrollbar-width:none;"></div>
+    <style>#site-search-results::-webkit-scrollbar{display:none;}</style>
+  </div>
+ </div>
+</div>
+
+<section class="p-hero washed">
+  <image-slot id="p-hero-photo" shape="rect" role="img" aria-label="Project hero photo"></image-slot>
+</section>
+
+<div class="wrap">
+
+  <section class="p-head" id="p-head"></section>
+
+  <section class="p-narrative reveal" id="p-narrative"></section>
+
+  <section class="gallery reveal-stagger" id="gallery"></section>
+
+  <section class="next reveal" id="next"></section>
+
+  <footer>
+    <div class="col">
+      <p class="col-title">[COMPANY NAME]</p>
+      <p>WC4J+V8F, Mosta, Malta</p>
+    </div>
+    <div class="col">
+      <p class="col-title">Contact</p>
+      <p><a href="mailto:studio@companyname.mt">studio@companyname.mt</a></p>
+      <p><a href="tel:+35621234567">+356 2123 4567</a></p>
+    </div>
+    <div class="col">
+      <p class="col-title">Hours</p>
+      <p>Mon–Fri, 9:00–17:00</p>
+    </div>
+    <div class="col">
+      <p class="col-title">Follow</p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
+</div>
+<script src="image-slot.js"></script>
+<script src="projects-data.js"></script>
+<script>
+(async () => {
+  const projects = await loadProjects();
+  const slug = new URLSearchParams(location.search).get('slug') || projects[0].slug;
+  const idx = Math.max(0, projects.findIndex(p => p.slug === slug));
+  const project = projects[idx];
+  const d = project.detail;
+
+  wireSiteSearch(projects);
+  document.title = `${project.name} — [COMPANY NAME]`;
+  document.getElementById('p-hero-photo').setAttribute('id', d.heroImage.id);
+  document.getElementById(d.heroImage.id).setAttribute('aria-label', d.heroImage.alt);
+
+  document.getElementById('p-head').innerHTML = `
+    <div class="reveal">
+      <span class="kicker"><a href="work.html" style="color:inherit;">← Selected work</a></span>
+      <h1 class="p-title">${project.name}</h1>
+      <p class="p-loc">${d.tagline}</p>
+    </div>
+    <dl class="p-facts reveal">
+      <div><dt>Location</dt><dd>${project.location}, Malta</dd></div>
+      <div><dt>Year</dt><dd>${project.year}</dd></div>
+      <div><dt>Size</dt><dd>${project.size}</dd></div>
+      <div><dt>Scope</dt><dd>${project.scope}</dd></div>
+    </dl>`;
+
+  document.getElementById('p-narrative').innerHTML = d.narrative.map(t => `<p>${t}</p>`).join('');
+
+  document.getElementById('gallery').innerHTML = d.gallery.map(g => `
+    <figure class="${g.wide ? 'wide ' : ''}washed"><image-slot id="${g.id}" shape="rect" role="img" aria-label="${g.alt}"></image-slot></figure>`).join('');
+
+  const next = projects[(idx + 1) % projects.length];
+  document.getElementById('next').innerHTML = `
+    <span>Next project</span>
+    <a href="project-detail.html?slug=${next.slug}">${next.name}, ${next.location} →</a>`;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  const revealEls = [...document.querySelectorAll('.reveal, .reveal-stagger')];
+  revealEls.forEach(el => io.observe(el));
+  function checkFallback() {
+    revealEls.forEach(el => {
+      if (el.classList.contains('is-visible')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 40 && r.bottom > 0) el.classList.add('is-visible');
+    });
+  }
+  checkFallback();
+  window.addEventListener('scroll', checkFallback, { passive: true });
+  window.addEventListener('resize', checkFallback);
+
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    function edgeOffset(e) {
+      const r = btn.getBoundingClientRect();
+      const relY = (e.clientY - r.top) / r.height;
+      return relY < 0.5 ? ['0%', '-100%'] : ['0%', '100%'];
+    }
+    btn.addEventListener('mouseenter', e => {
+      const [fx, fy] = edgeOffset(e);
+      btn.style.setProperty('--fx', fx);
+      btn.style.setProperty('--fy', fy);
+      btn.classList.add('fill-in');
+    });
+    btn.addEventListener('mouseleave', e => {
+      const [fx, fy] = edgeOffset(e);
+      btn.classList.remove('fill-in');
+      btn.style.setProperty('--fx', fx);
+      btn.style.setProperty('--fy', fy);
+    });
+  });
+})();
+</script>
+</body>
+</html>

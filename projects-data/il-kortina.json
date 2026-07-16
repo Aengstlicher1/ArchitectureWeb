@@ -1,0 +1,28 @@
+{
+  "slug": "il-kortina",
+  "name": "Il-Kortina",
+  "location": "Mosta",
+  "locationKey": "mosta",
+  "type": "Residential, Courtyard House",
+  "typeKey": "residential",
+  "year": 2021,
+  "size": "280 m²",
+  "scope": "New Build, Interiors",
+  "featured": true,
+  "cardImage": { "id": "card-il-kortina", "alt": "Il-Kortina courtyard house in Mosta" },
+  "detail": {
+    "tagline": "A courtyard house on the studio's own street, built around a single fig tree.",
+    "heroImage": { "id": "hero-il-kortina", "alt": "Il-Kortina exterior courtyard, Mosta" },
+    "narrative": [
+      "Close to the studio's own door, this house wraps its rooms around a central courtyard rather than facing them to the street — a plan borrowed from the older houses of the town, reworked for a family of four.",
+      "A fig tree already growing on the site was kept and built around, rather than cleared for the foundations. Every principal room opens onto the courtyard it shades.",
+      "Deep reveals and a single continuous roof overhang keep the interior cool through summer without mechanical cooling in the living spaces."
+    ],
+    "gallery": [
+      { "id": "gal-il-kortina-1", "alt": "Courtyard with the retained fig tree", "wide": true },
+      { "id": "gal-il-kortina-2", "alt": "Living room opening to the courtyard" },
+      { "id": "gal-il-kortina-3", "alt": "Deep window reveal detail" },
+      { "id": "gal-il-kortina-4", "alt": "Roof overhang and stone facade" }
+    ]
+  }
+}

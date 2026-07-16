@@ -1,0 +1,29 @@
+{
+  "slug": "villa-rdum",
+  "name": "Villa Rdum",
+  "location": "Mellieħa",
+  "locationKey": "mellieha",
+  "type": "Residential, New Build",
+  "typeKey": "residential",
+  "year": 2023,
+  "size": "67 m²",
+  "scope": "New Build, Interiors",
+  "featured": true,
+  "cardImage": { "id": "card-villa-rdum", "alt": "Villa Rdum, a new-build residence in Mellieħa" },
+  "detail": {
+    "tagline": "A new-build residence set into a limestone ridge above Mellieħa Bay.",
+    "heroImage": { "id": "hero-villa-rdum", "alt": "Villa Rdum exterior, limestone facade at dusk" },
+    "narrative": [
+      "The site falls steeply toward the bay, so the house is arranged as a sequence of stepped terraces rather than a single volume — each level opening onto its own strip of garden or stone terrace, so no room asks for the same light twice.",
+      "The outer walls are built from local globigerina limestone, left in its natural finish to weather the way the older houses nearby already have. Inside, the same warmth continues in timber joinery and lime-washed plaster, kept deliberately spare so the view over the bay stays the room's only ornament.",
+      "A central courtyard — planted with a single olive tree — draws light and air through the plan, and gives the house a quiet centre to return to at the end of the day."
+    ],
+    "gallery": [
+      { "id": "gal-villa-rdum-1", "alt": "Villa Rdum living room opening onto the bay", "wide": true },
+      { "id": "gal-villa-rdum-2", "alt": "Central courtyard with olive tree" },
+      { "id": "gal-villa-rdum-3", "alt": "Stepped stone terrace detail" },
+      { "id": "gal-villa-rdum-4", "alt": "Bedroom with timber joinery" },
+      { "id": "gal-villa-rdum-5", "alt": "Limestone facade detail at dusk" }
+    ]
+  }
+}

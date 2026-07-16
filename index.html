@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[COMPANY NAME] — Architecture Studio, Mosta</title>
+<script src="./ds-base.js"></script>
+<style>
+:root {
+  --leading: 28px;
+  --half: 14px;
+  --edge: clamp(20px, 5vw, 72px);
+  --measure: 58ch;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; text-wrap: pretty; overflow-x: clip; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
+.nav { padding-inline: max(var(--edge), calc((100% - 1200px) / 2 + var(--edge))); position: sticky; top: 0;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(6px); z-index: 10; }
+.nav a { white-space: nowrap; }
+.nav .btn { white-space: nowrap; }
+@media (max-width: 640px) { .nav a { display: none; } }
+
+.kicker {
+  display: block; font-size: 13px; line-height: var(--half);
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+  color: var(--color-accent-700);
+  margin: 0 0 calc(var(--leading) - var(--half));
+}
+
+/* — hero: full-bleed washed image, headline over it — */
+.hero { position: relative; margin-top: calc(-1 * var(--leading)); }
+.hero-carousel-wrap { position: relative; isolation: isolate; }
+.hero-carousel { position: relative; isolation: isolate; height: 480px;
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.hero-carousel::-webkit-scrollbar { display: none; }
+.hero-slide { position: relative; flex: 0 0 100%; scroll-snap-align: start; height: 480px; }
+.hero-slide image-slot { width: 100%; height: 100%; }
+.hero-slide::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-neutral-900) 45%, transparent) 0%, transparent 55%); }
+.hero-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+  background: color-mix(in srgb, var(--color-neutral-900) 35%, transparent); color: #fff;
+  display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease; }
+.hero-nav:hover { background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent); transform: translateY(-50%) scale(1.06); }
+.hero-nav.prev { left: var(--edge); }
+.hero-nav.next { right: var(--edge); }
+.hero-dots { display: flex; gap: 10px; justify-content: center; padding: var(--half) 0; }
+.hero-dot { width: 16px; height: 16px; border-radius: 50%; border: none; cursor: pointer; padding: 0;
+  background: color-mix(in srgb, var(--color-text) 18%, transparent);
+  transition: width 0.3s ease, background 0.3s ease, transform 0.2s ease; }
+.hero-dot:hover { transform: scale(1.15); }
+.hero-dot[aria-current="true"] { width: 38px; border-radius: 999px; background: var(--color-accent); }
+.hero-dot { position: relative; overflow: hidden; }
+.hero-dot::after { content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-accent-300) 85%, transparent), transparent);
+  transform: translateX(-100%); }
+.hero-dot:not([aria-current="true"])::after { display: none; }
+.hero-dot.sweep::after { animation: dotSweep 5s ease-in-out; }
+@keyframes dotSweep { to { transform: translateX(100%); } }
+.hero-inner { padding: calc(2 * var(--leading)) var(--edge) calc(1.5 * var(--leading)); width: 100%;
+  max-width: 1200px; margin: 0 auto; box-sizing: border-box; }
+.display {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: clamp(40px, 5.8vw, 76px);
+  line-height: clamp(43px, 6.26vw, 82px);
+  letter-spacing: 0; margin: 0; color: var(--color-text);
+}
+.display .line { display: block; }
+.hero .sub { font-size: 17px; line-height: var(--leading); max-width: var(--measure);
+  margin: calc(1.5 * var(--leading) - 1cap) 0 0; color: color-mix(in srgb, var(--color-text) 82%, transparent); }
+.hero .row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--leading); }
+.hero .row .btn { white-space: nowrap; }
+@media (max-width: 640px) { .hero-nav { width: 36px; height: 36px; } }
+
+/* — studio statement — */
+.statement { padding: calc(3 * var(--leading)) 0 calc(2 * var(--leading)); }
+.statement p { font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: clamp(24px, 2.8vw, 34px); line-height: calc(1.5 * var(--leading));
+  max-width: 30ch; margin: 0; }
+
+/* — featured projects grid — */
+.work { padding: calc(1.5 * var(--leading)) 0 calc(3 * var(--leading)); }
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(1.25 * var(--leading)) clamp(20px, 3vw, 48px); }
+.proj-card { display: block; text-decoration: none; color: inherit; }
+.proj-figure { margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; }
+.proj-figure image-slot { width: 100%; height: 100%; transition: transform 0.5s ease; }
+.proj-card:hover .proj-figure image-slot { transform: scale(1.035); }
+.proj-meta { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2);
+  margin-top: var(--half); }
+.proj-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 21px; margin: 0; }
+.proj-loc { font-size: 13px; color: color-mix(in srgb, var(--color-text) 65%, transparent); margin: 2px 0 0; }
+@media (max-width: 880px) { .work-grid { grid-template-columns: 1fr; } }
+
+/* — services / feature rows — */
+.features { padding: calc(2.5 * var(--leading)) 0 calc(2.5 * var(--leading)); }
+.feature { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: var(--leading) clamp(24px, 4vw, 72px); align-items: baseline;
+  padding: calc(1.1 * var(--leading)) 0; border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+.feature:first-of-type { border-top: none; }
+.f-title { position: relative; font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 24px; line-height: var(--leading); margin: 0; }
+.f-title::before { content: ""; position: absolute; left: -36px; top: calc(0.5cap - 9px);
+  width: 16px; height: 16px; border-radius: 50%; background: var(--color-accent); }
+@media (max-width: 1280px) { .f-title::before { display: none; } }
+.f-copy { font-size: 15.5px; line-height: var(--leading); margin: 0;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent); max-width: 52ch; }
+
+/* — imagery split (local credibility) — */
+.split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--leading) clamp(24px, 5vw, 96px); align-items: center;
+  padding: calc(2 * var(--leading)) 0 calc(3 * var(--leading)); }
+.split-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 32px; line-height: calc(1.5 * var(--leading)); margin: 0; }
+.split-copy .note { font-size: 15.5px; line-height: var(--leading);
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+  margin: calc(var(--leading) - 1cap) 0 0; max-width: 48ch; }
+.split-figure { margin: 0; width: min(400px, 100%); justify-self: end;
+  border-radius: calc(2 * var(--radius-lg)); overflow: hidden; }
+.split-figure image-slot { width: 100%; aspect-ratio: 493 / 668; }
+.credentials { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--leading); }
+
+/* — close / contact patch — */
+.close { padding: 0 0 calc(2 * var(--leading)); }
+.patch { background: var(--color-accent-2-100); border-radius: calc(2 * var(--radius-lg));
+  padding: calc(2 * var(--leading)) clamp(24px, 4vw, 64px); }
+.patch h3 { font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 26px; line-height: var(--leading); margin: 0; }
+.patch .sub { font-size: 15.5px; line-height: var(--leading);
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+  margin: calc(var(--leading) - 1cap) 0 0; max-width: var(--measure); }
+.patch .row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--leading); }
+
+footer { padding: calc(2 * var(--leading)) 0; display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--leading); font-size: 13px; line-height: var(--leading);
+  color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+footer .col { min-width: 180px; }
+footer .col-title { font-weight: 600; color: var(--color-text); margin-bottom: 6px; }
+footer a { color: inherit; }
+
+a { color: var(--color-accent-700); text-decoration: none; }
+a:hover { color: var(--color-accent-800); text-decoration: underline; }
+
+.btn-primary { box-shadow: 0 0 22px color-mix(in srgb, var(--color-accent) 34%, transparent); background: transparent !important; }
+.btn-primary:hover, .btn-primary:active { box-shadow: 0 0 22px color-mix(in srgb, var(--color-accent-600) 38%, transparent); background: transparent !important; }
+a.btn:hover, a.btn-primary:hover { text-decoration: none; }
+a.btn-primary:hover { color: var(--color-bg); }
+#search-overlay { opacity: 0; transition: opacity 0.28s ease; }
+#search-overlay.open { opacity: 1; }
+#search-overlay .search-outer { transform-origin: top center; transform: scaleY(0.82) rotate(-0.5deg);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1); }
+#search-overlay .search-inner { transform-origin: center; transform: scaleX(0.82);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) 0.07s; }
+#search-overlay.open .search-outer { transform: scaleY(1) rotate(0deg); }
+#search-overlay.open .search-inner { transform: scaleX(1); }
+#nav-search-btn { border-radius: 999px; transition: background 0.2s ease, color 0.2s ease; }
+#nav-search-btn:hover { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-accent-700); }
+
+.btn-primary { position: relative; color: var(--color-accent-700);
+  border: 1.5px solid var(--color-accent); overflow: hidden; z-index: 0; transition: color 0.35s ease 0.05s;
+  white-space: nowrap; --fx: 0%; --fy: 100%; }
+.btn-primary::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: 6px;
+  background: var(--color-accent); transform: translate(var(--fx), var(--fy)); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.4s ease; }
+.btn-primary.fill-in { color: var(--color-bg); }
+.btn-primary.fill-in::before { transform: translate(0, 0); border-radius: inherit; }
+a.btn-primary:hover { color: var(--color-bg); }
+
+/* — tweakable: mood (which accent leads the page voice) — */
+html { --mood-primary: var(--color-accent); --mood-primary-700: var(--color-accent-700);
+  --mood-secondary-100: var(--color-accent-2-100); }
+html[data-mood="sage"] { --mood-primary: var(--color-accent-2); --mood-primary-700: var(--color-accent-2-700);
+  --mood-secondary-100: var(--color-accent-100); }
+.kicker { color: var(--mood-primary-700); }
+.f-title::before { background: var(--mood-primary); }
+.patch { background: var(--mood-secondary-100); }
+.credentials .tag-outline { border-color: var(--mood-primary); color: var(--mood-primary-700); }
+
+/* — tweakable: density (the page's rhythm unit) — */
+html[data-density="compact"] { --leading: 21px; }
+
+/* — tweakable: hero treatment (full-bleed statement vs. framed quiet) — */
+html[data-hero="framed"] .hero { margin: calc(1.5 * var(--leading)) auto 0; max-width: calc(1200px + 2 * var(--edge));
+  padding-inline: var(--edge); box-sizing: border-box; min-height: 0; aspect-ratio: 21 / 9; }
+html[data-hero="framed"] .hero-carousel-wrap { border-radius: calc(2 * var(--radius-lg)); overflow: hidden; }
+html[data-hero="framed"] .hero-inner { padding: calc(1.25 * var(--leading)); max-width: none; }
+
+/* — tweaks panel — */
+#tweaks-toggle { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+#tweaks-panel { position: fixed; bottom: 68px; right: 20px; z-index: 100; width: 260px;
+  background: var(--color-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: var(--space-3); display: none; }
+#tweaks-panel.open { display: block; }
+#tweaks-panel h4 { font-family: var(--font-body); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 8px; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
+#tweaks-panel .tweak-group { margin-bottom: var(--space-3); }
+#tweaks-panel .tweak-group:last-child { margin-bottom: 0; }
+#tweaks-panel .seg-row { display: flex; gap: 6px; }
+#tweaks-panel .seg-btn { flex: 1; font-size: 12px; padding: 7px 4px; border-radius: 999px;
+  border: 1px solid var(--color-divider); background: transparent; color: var(--color-text); cursor: pointer; font-family: var(--font-body); }
+#tweaks-panel .seg-btn[aria-pressed="true"] { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+
+@media (max-width: 720px) {
+  .split { grid-template-columns: 1fr; }
+  .split-figure { order: -1; justify-self: start; }
+  .feature { grid-template-columns: 1fr; gap: var(--half); }
+}
+
+/* — scroll reveal — */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand" style="text-decoration:none;color:inherit;">[COMPANY NAME]</a>
+  <a href="#work">Work</a>
+  <a href="#studio">Studio</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+  <button type="button" class="btn btn-primary">Start a project</button>
+  <button type="button" class="btn btn-icon" id="nav-search-btn" aria-label="Search the site (⌘/Ctrl + Space)" title="Search (⌘/Ctrl + Space)" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </button>
+</nav>
+
+<div id="search-overlay" style="display:none; position:fixed; inset:0; z-index:200; background:color-mix(in srgb, var(--color-neutral-900) 55%, transparent); backdrop-filter:blur(2px); align-items:flex-start; justify-content:center;">
+ <div class="search-outer" style="width:100%; max-width:640px; margin:12vh 0 0;">
+  <div class="search-inner" style="background:var(--color-bg); border-radius:var(--radius-lg); padding:var(--space-3); box-shadow:var(--shadow-lg);">
+    <input type="search" id="site-search-input" placeholder="Search projects, services, pages…" aria-label="Search the site"
+      style="width:100%; box-sizing:border-box; font-size:18px; font-family:var(--font-body); padding:12px 14px; border:1px solid var(--color-divider); border-radius:var(--radius-md); background:var(--color-surface); color:var(--color-text);" />
+    <div id="site-search-results" style="margin-top:var(--half); max-height:50vh; overflow-y:auto; scrollbar-width:none;"></div>
+    <style>#site-search-results::-webkit-scrollbar{display:none;}</style>
+  </div>
+ </div>
+</div>
+
+<section class="hero">
+  <div class="hero-carousel-wrap">
+    <div class="hero-carousel" id="hero-carousel">
+      <figure class="hero-slide washed"><image-slot id="hero-photo-1" shape="rect" role="img" aria-label="Sunlit limestone facade of a residence in Malta"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-2" shape="rect" role="img" aria-label="Courtyard house with olive tree, Mosta"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-3" shape="rect" role="img" aria-label="Restored townhouse interior, Mdina"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-4" shape="rect" role="img" aria-label="Living room opening onto the bay, Mellieħa"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-5" shape="rect" role="img" aria-label="Timber joinery detail, Sliema townhouse"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-6" shape="rect" role="img" aria-label="Limestone facade detail at dusk"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-7" shape="rect" role="img" aria-label="Stone terrace overlooking the countryside, Gozo"></image-slot></figure>
+      <figure class="hero-slide washed"><image-slot id="hero-photo-8" shape="rect" role="img" aria-label="Farmhouse renovation living wing, Mosta"></image-slot></figure>
+      <figure class="hero-slide washed" aria-hidden="true"><image-slot id="hero-photo-1-clone" shape="rect" role="img" aria-label="Sunlit limestone facade of a residence in Malta"></image-slot></figure>
+    </div>
+    <button type="button" class="hero-nav prev" id="hero-prev" aria-label="Previous image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button type="button" class="hero-nav next" id="hero-next" aria-label="Next image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+  <div class="hero-dots" id="hero-dots"></div>
+  <div class="hero-inner">
+    <h1 class="display"><span class="line">Architecture, drawn</span> <span class="line">from limestone light.</span></h1>
+    <p class="sub">[COMPANY NAME] is a boutique studio in Mosta designing homes, additions and interiors across Malta and Gozo — quiet, considered work built from the island's own stone and sun.</p>
+    <div class="row">
+      <button type="button" class="btn btn-primary">Start a project</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <section class="statement reveal" id="studio">
+    <p>We design from the site outward — the fall of light, the run of a wall, the way a room should feel at six in the evening — before we design from a brief.</p>
+  </section>
+
+  <section class="work" id="work">
+    <div class="reveal" style="display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-3); flex-wrap:wrap;">
+      <span class="kicker" style="margin-bottom:0;">Selected work</span>
+      <a href="work.html" class="btn btn-primary" style="white-space:nowrap;">View all projects</a>
+    </div>
+    <div class="work-grid reveal-stagger" id="featured-grid" style="margin-top:var(--leading);"></div>
+  </section>
+
+  <section class="features" id="services">
+    <span class="kicker reveal">What we do</span>
+    <div class="feature reveal">
+      <h2 class="f-title">Residential Design</h2>
+      <p class="f-copy">New homes and additions across Malta and Gozo, designed from the plot outward — orientation, views and the character of the surrounding streetscape shape every plan before a single room does.</p>
+    </div>
+    <div class="feature reveal">
+      <h2 class="f-title">Renovations</h2>
+      <p class="f-copy">Careful work on townhouses and older properties: reading what a building wants to keep, and giving the rest room to become something quieter and more useful.</p>
+    </div>
+    <div class="feature reveal">
+      <h2 class="f-title">Interior Architecture</h2>
+      <p class="f-copy">Layout, light, joinery and material carried through to the last detail — interiors designed alongside the architecture, not applied to it afterwards.</p>
+    </div>
+    <div class="feature reveal">
+      <h2 class="f-title">Planning &amp; Permits</h2>
+      <p class="f-copy">Full-service delivery through the Planning Authority process, from concept submission to final permit — one point of contact from first sketch to build.</p>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="split-copy reveal">
+      <span class="kicker">Based in Mosta</span>
+      <h2 class="split-title">A studio rooted in the island it builds on</h2>
+      <p class="note">Our studio sits in Mosta, a short drive from every site we work on across Malta and Gozo. Working close to the ground means fewer surprises on site, and a better sense of how a house should sit in its street. Led by Sean, our team of four carries every project from first sketch to final permit.</p>
+      <div class="credentials">
+        <span class="tag tag-outline">Kamra tal-Periti Member</span>
+        <span class="tag tag-outline">4-person studio</span>
+      </div>
+    </div>
+    <figure class="split-figure washed reveal">
+      <image-slot id="studio-photo" shape="rect" role="img" aria-label="Studio workspace with material samples and drawings"></image-slot>
+    </figure>
+  </section>
+
+  <section class="close reveal" id="contact">
+    <div class="patch">
+      <h3>Planning something in Malta or Gozo?</h3>
+      <p class="sub">Tell us about the site and what you have in mind. We take on a small number of projects at a time, so an early conversation is the best place to start.</p>
+      <div class="row">
+        <button type="button" class="btn btn-primary">Start a project</button>
+        <button type="button" class="btn btn-ghost">Book a consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="col">
+      <p class="col-title">[COMPANY NAME]</p>
+      <p>WC4J+V8F, Mosta, Malta</p>
+    </div>
+    <div class="col">
+      <p class="col-title">Contact</p>
+      <p><a href="mailto:studio@companyname.mt">studio@companyname.mt</a></p>
+      <p><a href="tel:+35621234567">+356 2123 4567</a></p>
+    </div>
+    <div class="col">
+      <p class="col-title">Hours</p>
+      <p>Mon–Fri, 9:00–17:00</p>
+      <p>By appointment, Saturdays</p>
+    </div>
+    <div class="col">
+      <p class="col-title">Follow</p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
+</div>
+<script src="image-slot.js"></script>
+<script src="projects-data.js"></script>
+<script>
+(async () => {
+  const projects = await loadProjects();
+  const featured = projects.filter(p => p.featured);
+  document.getElementById('featured-grid').innerHTML = featured.map(projectCardHTML).join('');
+  wireSiteSearch(projects);
+
+  const carousel = document.getElementById('hero-carousel');
+  const slides = [...carousel.children];
+  const realCount = slides.length - 1;
+  const dotsWrap = document.getElementById('hero-dots');
+  dotsWrap.innerHTML = slides.slice(0, realCount).map((_, i) => `<button type="button" class="hero-dot" aria-label="Go to image ${i + 1}" aria-current="${i === 0}"></button>`).join('');
+  const dots = [...dotsWrap.children];
+  let active = 0, timer, isSyncing = false;
+
+  function setDot(i) { dots.forEach((d, di) => d.setAttribute('aria-current', String(di === i))); }
+
+  function goTo(i, instant) {
+    active = i;
+    isSyncing = true;
+    carousel.scrollTo({ left: carousel.clientWidth * active, behavior: instant ? 'auto' : 'smooth' });
+    setDot(((active % realCount) + realCount) % realCount);
+    clearTimeout(carousel._syncEnd);
+    carousel._syncEnd = setTimeout(() => {
+      isSyncing = false;
+      if (active === realCount) { active = 0; goTo(0, true); }
+    }, instant ? 0 : 500);
+  }
+  dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); resetTimer(); }));
+  document.getElementById('hero-prev').addEventListener('click', () => { goTo(Math.max(active - 1, 0)); resetTimer(); });
+  document.getElementById('hero-next').addEventListener('click', () => { goTo(active + 1); resetTimer(); });
+  carousel.addEventListener('scroll', () => {
+    if (isSyncing) return;
+    const i = Math.round(carousel.scrollLeft / carousel.clientWidth);
+    if (i !== active) { active = i; setDot(((active % realCount) + realCount) % realCount); }
+  }, { passive: true });
+  function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo(active + 1), 5000); }
+  resetTimer();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  const revealEls = [...document.querySelectorAll('.reveal, .reveal-stagger')];
+  revealEls.forEach(el => io.observe(el));
+  function checkFallback() {
+    revealEls.forEach(el => {
+      if (el.classList.contains('is-visible')) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 40 && r.bottom > 0) el.classList.add('is-visible');
+    });
+  }
+  checkFallback();
+  window.addEventListener('scroll', checkFallback, { passive: true });
+  window.addEventListener('resize', checkFallback);
+
+  dots.forEach(d => {
+    d.classList.add('sweep');
+    d.addEventListener('animationend', () => d.classList.remove('sweep'));
+  });
+  setInterval(() => dots.forEach(d => { d.classList.remove('sweep'); void d.offsetWidth; d.classList.add('sweep'); }), 5000);
+
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    function edgeOffset(e) {
+      const r = btn.getBoundingClientRect();
+      const relY = (e.clientY - r.top) / r.height;
+      return relY < 0.5 ? ['0%', '-100%'] : ['0%', '100%'];
+    }
+    btn.addEventListener('mouseenter', e => {
+      const [fx, fy] = edgeOffset(e);
+      btn.style.setProperty('--fx', fx);
+      btn.style.setProperty('--fy', fy);
+      btn.classList.add('fill-in');
+    });
+    btn.addEventListener('mouseleave', e => {
+      const [fx, fy] = edgeOffset(e);
+      btn.classList.remove('fill-in');
+      btn.style.setProperty('--fx', fx);
+      btn.style.setProperty('--fy', fy);
+    });
+  });
+})();
+</script>
+</body>
+</html>
