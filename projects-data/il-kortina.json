@@ -9,20 +9,61 @@
   "size": "280 m²",
   "scope": "New Build, Interiors",
   "featured": true,
-  "cardImage": { "id": "card-il-kortina", "alt": "Il-Kortina courtyard house in Mosta" },
+  "cardImage": {
+    "id": "card-il-kortina",
+    "alt": "Il-Kortina courtyard house in Mosta"
+  },
   "detail": {
     "tagline": "A courtyard house on the studio's own street, built around a single fig tree.",
-    "heroImage": { "id": "hero-il-kortina", "alt": "Il-Kortina exterior courtyard, Mosta" },
+    "heroImage": {
+      "id": "hero-il-kortina",
+      "alt": "Il-Kortina exterior courtyard, Mosta"
+    },
     "narrative": [
       "Close to the studio's own door, this house wraps its rooms around a central courtyard rather than facing them to the street — a plan borrowed from the older houses of the town, reworked for a family of four.",
       "A fig tree already growing on the site was kept and built around, rather than cleared for the foundations. Every principal room opens onto the courtyard it shades.",
       "Deep reveals and a single continuous roof overhang keep the interior cool through summer without mechanical cooling in the living spaces."
     ],
     "gallery": [
-      { "id": "gal-il-kortina-1", "alt": "Courtyard with the retained fig tree", "wide": true },
-      { "id": "gal-il-kortina-2", "alt": "Living room opening to the courtyard" },
-      { "id": "gal-il-kortina-3", "alt": "Deep window reveal detail" },
-      { "id": "gal-il-kortina-4", "alt": "Roof overhang and stone facade" }
+      {
+        "id": "gal-il-kortina-1",
+        "alt": "Courtyard with the retained fig tree",
+        "wide": true
+      },
+      {
+        "id": "gal-il-kortina-2",
+        "alt": "Living room opening to the courtyard"
+      },
+      {
+        "id": "gal-il-kortina-3",
+        "alt": "Deep window reveal detail"
+      },
+      {
+        "id": "gal-il-kortina-4",
+        "alt": "Roof overhang and stone facade"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "type": "Residenzjali, Dar bil-Btieħa",
+      "scope": "Bini Ġdid, Interjuri",
+      "tagline": "Dar bil-btieħa fl-istess triq tal-istudjo, mibnija madwar siġra tat-tin waħda.",
+      "narrative": [
+        "Qrib il-bieb tal-istudjo stess, din id-dar tgeżwer il-kmamar tagħha madwar btieħa ċentrali minflok tħares lejn it-triq — pjanta meħuda mid-djar l-antiki tar-raħal, imfassla mill-ġdid għal familja ta' erbgħa.",
+        "Siġra tat-tin li kienet diġà tikber fuq is-sit inżammet u nbniet madwarha, minflok titneħħa għall-pedamenti. Kull kamra prinċipali tinfetaħ għall-btieħa li ddellilha.",
+        "Twieqi fondi u projezzjoni tas-saqaf kontinwa jżommu l-ġewwa friska tul is-sajf mingħajr tkessiħ mekkaniku fl-ispazji tal-għajxien."
+      ]
+    },
+    "de": {
+      "type": "Wohnbau, Hofhaus",
+      "scope": "Neubau, Innenausbau",
+      "tagline": "Ein Hofhaus in der eigenen Straße des Studios, gebaut um einen einzelnen Feigenbaum.",
+      "narrative": [
+        "Nahe der eigenen Tür des Studios legt dieses Haus seine Räume um einen zentralen Innenhof, statt sie zur Straße hin auszurichten — ein Grundriss, der den älteren Häusern des Ortes entlehnt und für eine vierköpfige Familie neu bearbeitet wurde.",
+        "Ein bereits auf dem Grundstück wachsender Feigenbaum wurde erhalten und umbaut, statt für das Fundament gerodet zu werden. Jeder Hauptraum öffnet sich zu dem Innenhof, den er beschattet.",
+        "Tiefe Laibungen und ein durchgehender Dachüberstand halten das Innere den Sommer über kühl, ohne mechanische Kühlung in den Wohnräumen."
+      ]
+    }
   }
 }

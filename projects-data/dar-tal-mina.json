@@ -9,20 +9,61 @@
   "size": "245 m²",
   "scope": "Renovation, Interiors",
   "featured": true,
-  "cardImage": { "id": "card-dar-tal-mina", "alt": "Dar tal-Mina, a renovated townhouse in Mdina" },
+  "cardImage": {
+    "id": "card-dar-tal-mina",
+    "alt": "Dar tal-Mina, a renovated townhouse in Mdina"
+  },
   "detail": {
     "tagline": "A silent-city townhouse restored room by room, without losing its quiet.",
-    "heroImage": { "id": "hero-dar-tal-mina", "alt": "Dar tal-Mina courtyard entrance in Mdina" },
+    "heroImage": {
+      "id": "hero-dar-tal-mina",
+      "alt": "Dar tal-Mina courtyard entrance in Mdina"
+    },
     "narrative": [
       "Behind Mdina's walls, this townhouse had been divided and subdivided across three generations. The renovation began by reading the original plan in the stonework — door heads, blocked archways, the ghost of a staircase — and rebuilt the layout around what the house had always wanted to be.",
       "New services run invisibly through service risers cut behind existing openings, so no ceiling in the original rooms had to come down. Where plaster had failed beyond repair, it was replaced in lime, matched by hand to the tone of what remained.",
       "The result reads as barely touched — which was the point. A house four centuries old shouldn't announce the year it was renovated."
     ],
     "gallery": [
-      { "id": "gal-dar-tal-mina-1", "alt": "Restored internal courtyard", "wide": true },
-      { "id": "gal-dar-tal-mina-2", "alt": "Original stone archway retained" },
-      { "id": "gal-dar-tal-mina-3", "alt": "Living room with lime-plastered walls" },
-      { "id": "gal-dar-tal-mina-4", "alt": "Restored timber balcony detail" }
+      {
+        "id": "gal-dar-tal-mina-1",
+        "alt": "Restored internal courtyard",
+        "wide": true
+      },
+      {
+        "id": "gal-dar-tal-mina-2",
+        "alt": "Original stone archway retained"
+      },
+      {
+        "id": "gal-dar-tal-mina-3",
+        "alt": "Living room with lime-plastered walls"
+      },
+      {
+        "id": "gal-dar-tal-mina-4",
+        "alt": "Restored timber balcony detail"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "type": "Rinnovazzjoni",
+      "scope": "Rinnovazzjoni, Interjuri",
+      "tagline": "Dar fil-belt siekta restawrata kamra b'kamra, mingħajr ma titlef il-kwiet tagħha.",
+      "narrative": [
+        "Wara s-swar tal-Imdina, din id-dar kienet inqasmet u reġgħet inqasmet tul tliet ġenerazzjonijiet. Ir-rinnovazzjoni bdiet billi naqraw il-pjanta oriġinali fil-ġebla — l-ilqugħ tal-bibien, l-arkati magħluqa, ix-xebħ ta' taraġ li kien hemm — u rebbiegħet it-tqassim madwar dak li d-dar dejjem xtaqet tkun.",
+        "Is-servizzi l-ġodda jgħaddu moħbija minn kanali mqattgħin wara l-ftuħ eżistenti, biex l-ebda saqaf fil-kmamar oriġinali ma kellu jinżel. Fejn il-ġibs kien fallit lil hinn minn tiswija, ġie mibdul bil-ġir, imqabbel bl-idejn mat-ton ta' dak li baqa'.",
+        "Ir-riżultat jidher kważi ma mmissx — u dan kien il-għan. Dar ta' erba' sekli m'għandhiex tħabbar is-sena li ġiet rinnovata."
+      ]
+    },
+    "de": {
+      "type": "Renovierung",
+      "scope": "Renovierung, Innenausbau",
+      "tagline": "Ein Stadthaus in der stillen Stadt, Raum für Raum restauriert, ohne seine Ruhe zu verlieren.",
+      "narrative": [
+        "Hinter den Mauern von Mdina war dieses Stadthaus über drei Generationen geteilt und weiter unterteilt worden. Die Renovierung begann damit, den ursprünglichen Grundriss im Mauerwerk zu lesen — Türstürze, zugemauerte Bögen, die Spur einer Treppe — und den Grundriss um das aufzubauen, was das Haus immer sein wollte.",
+        "Neue Leitungen verlaufen unsichtbar in Schächten hinter bestehenden Öffnungen, sodass keine Decke der Originalräume abgehängt werden musste. Wo der Putz nicht mehr zu retten war, wurde er durch Kalkputz ersetzt, von Hand an den Ton des Erhaltenen angeglichen.",
+        "Das Ergebnis wirkt kaum berührt — das war die Absicht. Ein vierhundert Jahre altes Haus sollte nicht verkünden, in welchem Jahr es renoviert wurde."
+      ]
+    }
   }
 }

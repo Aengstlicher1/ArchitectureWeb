@@ -1,0 +1,62 @@
+{
+  "nav.work": "Xogħol",
+  "nav.studio": "Studjo",
+  "nav.services": "Servizzi",
+  "nav.contact": "Kuntatt",
+  "nav.start": "Ibda proġett",
+  "nav.search_aria": "Fittex is-sit (⌘/Ctrl + Space)",
+  "search.placeholder": "Fittex proġetti, servizzi, paġni…",
+
+  "hero.line1": "Arkitettura, imfassla",
+  "hero.line2": "mid-dawl tal-ġebla tal-franka.",
+  "hero.sub": "[COMPANY NAME] huwa studjo butik fil-Mosta li jiddisinja djar, estensjonijiet u interjuri madwar Malta u Għawdex — xogħol kwiet u studjat, mibni mill-ġebla u x-xemx tal-gżira stess.",
+
+  "statement.text": "Aħna niddisinjaw mis-sit 'l barra — kif jaqa' d-dawl, kif timxi ħajt, kif għandha tħossha kamra fis-sitta ta' filgħaxija — qabel ma niddisinjaw minn brief.",
+
+  "work.kicker": "Xogħol magħżul",
+  "work.viewall": "Ara l-proġetti kollha",
+
+  "services.kicker": "X'nagħmlu",
+  "services.residential.title": "Disinn Residenzjali",
+  "services.residential.copy": "Djar ġodda u estensjonijiet madwar Malta u Għawdex, iddisinjati mill-plot 'l barra — l-orjentazzjoni, il-veduti u l-karattru tat-triq ta' madwar ifasslu kull pjanta qabel ma tagħmel kwalunkwe kamra.",
+  "services.renovations.title": "Rinnovazzjonijiet",
+  "services.renovations.copy": "Xogħol bir-reqqa fuq townhouses u proprjetajiet aktar antiki: naqraw x'irid iżomm bini, u nagħtu lill-bqija l-ispazju biex issir xi ħaġa aktar kwieta u utli.",
+  "services.interior.title": "Arkitettura tal-Interjuri",
+  "services.interior.copy": "Tqassim, dawl, injam u materjal imwassla sal-aħħar dettall — interjuri ddisinjati flimkien mal-arkitettura, mhux miżjuda mbagħad.",
+  "services.planning.title": "Ippjanar u Permessi",
+  "services.planning.copy": "Servizz sħiħ tul il-proċess tal-Awtorità tal-Ippjanar, mis-sottomissjoni tal-kunċett sal-permess finali — punt wieħed ta' kuntatt mill-ewwel abbozz sal-bini.",
+
+  "split.kicker": "Ibbażati fil-Mosta",
+  "split.title": "Studjo b'għeruq fil-gżira li fuqha jibni",
+  "split.note": "L-istudjo tagħna jinsab fil-Mosta, qrib kull sit li naħdmu fuqu madwar Malta u Għawdex. Meta taħdem qrib l-art ifisser inqas sorpriżi fuq is-sit, u sens aħjar ta' kif dar għandha tinsab fi triqtha. Immexxi minn Sean, it-tim tagħna ta' erbgħa jġorr kull proġett mill-ewwel abbozz sal-permess finali.",
+  "split.badge1": "Membru tal-Kamra tal-Periti",
+  "split.badge2": "Studjo ta' 4 persuni",
+
+  "contact.title": "Qed tippjana xi ħaġa f'Malta jew Għawdex?",
+  "contact.sub": "Għidilna dwar is-sit u x'għandek f'moħħok. Naħdmu fuq numru żgħir ta' proġetti kull darba, għalhekk konversazzjoni bikrija hija l-aħjar post minn fejn tibda.",
+  "contact.cta2": "Ibbukkja konsultazzjoni",
+
+  "footer.contact": "Kuntatt",
+  "footer.hours": "Ħinijiet",
+  "footer.hours1": "Mit-Tnejn sal-Ġimgħa, 9:00–17:00",
+  "footer.hours2": "Bl-appuntament, is-Sibt",
+  "footer.follow": "Segwina",
+
+  "work.title": "Il-proġetti kollha",
+  "work.search_placeholder": "Fittex bl-isem jew bil-post…",
+  "work.empty": "L-ebda proġett ma jaqbel — ipprova tfittxija jew filtru differenti.",
+
+  "filters.all_styles": "L-istili kollha",
+  "filters.residential": "Residenzjali",
+  "filters.renovation": "Rinnovazzjoni",
+  "filters.interior": "Arkitettura tal-Interjuri",
+  "filters.commercial": "Kummerċjali",
+  "filters.all_locations": "Il-postijiet kollha",
+
+  "pd.back": "← Xogħol Magħżul",
+  "pd.location": "Post",
+  "pd.year": "Sena",
+  "pd.size": "Daqs",
+  "pd.scope": "Skop",
+  "pd.next": "Proġett li jmiss"
+}

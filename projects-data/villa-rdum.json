@@ -9,21 +9,69 @@
   "size": "67 m²",
   "scope": "New Build, Interiors",
   "featured": true,
-  "cardImage": { "id": "card-villa-rdum", "alt": "Villa Rdum, a new-build residence in Mellieħa" },
+  "cardImage": {
+    "id": "card-villa-rdum",
+    "alt": "Villa Rdum, a new-build residence in Mellieħa",
+    "src": "uploads/grafik-7697553f.png"
+  },
   "detail": {
     "tagline": "A new-build residence set into a limestone ridge above Mellieħa Bay.",
-    "heroImage": { "id": "hero-villa-rdum", "alt": "Villa Rdum exterior, limestone facade at dusk" },
+    "heroImage": {
+      "id": "hero-villa-rdum",
+      "alt": "Villa Rdum exterior, limestone facade at dusk",
+      "src": "uploads/grafik-7697553f.png"
+    },
     "narrative": [
       "The site falls steeply toward the bay, so the house is arranged as a sequence of stepped terraces rather than a single volume — each level opening onto its own strip of garden or stone terrace, so no room asks for the same light twice.",
       "The outer walls are built from local globigerina limestone, left in its natural finish to weather the way the older houses nearby already have. Inside, the same warmth continues in timber joinery and lime-washed plaster, kept deliberately spare so the view over the bay stays the room's only ornament.",
       "A central courtyard — planted with a single olive tree — draws light and air through the plan, and gives the house a quiet centre to return to at the end of the day."
     ],
     "gallery": [
-      { "id": "gal-villa-rdum-1", "alt": "Villa Rdum living room opening onto the bay", "wide": true },
-      { "id": "gal-villa-rdum-2", "alt": "Central courtyard with olive tree" },
-      { "id": "gal-villa-rdum-3", "alt": "Stepped stone terrace detail" },
-      { "id": "gal-villa-rdum-4", "alt": "Bedroom with timber joinery" },
-      { "id": "gal-villa-rdum-5", "alt": "Limestone facade detail at dusk" }
+      {
+        "id": "gal-villa-rdum-1",
+        "alt": "Villa Rdum living room opening onto the bay",
+        "wide": true
+      },
+      {
+        "id": "gal-villa-rdum-2",
+        "alt": "Central courtyard with olive tree"
+      },
+      {
+        "id": "gal-villa-rdum-3",
+        "alt": "Stepped stone terrace detail"
+      },
+      {
+        "id": "gal-villa-rdum-4",
+        "alt": "Bedroom with timber joinery"
+      },
+      {
+        "id": "gal-villa-rdum-5",
+        "alt": "Limestone facade detail at dusk"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "location": "Mellieħa",
+      "type": "Residenzjali, Bini Ġdid",
+      "scope": "Bini Ġdid, Interjuri",
+      "tagline": "Dar ġdida mibnija f'irdum tal-franka 'l fuq mill-Bajja tal-Mellieħa.",
+      "narrative": [
+        "Is-sit jinżel bil-qawwa lejn il-bajja, għalhekk id-dar hija arranġata bħala sensiela ta' terrazzi bil-gradi minflok volum wieħed — kull livell jinfetaħ għal biċċa ġnien jew terrazza tal-ġebla tiegħu stess, biex l-ebda kamra ma titlob l-istess dawl darbtejn.",
+        "Il-ħitan ta' barra huma mibnija mill-ġebla tal-franka lokali, imħollija fil-forma naturali tagħha biex tixjieħ bl-istess mod tad-djar l-antiki ta' madwarha. Ġewwa, l-istess sħana tkompli fl-injam u l-ġibs tal-ġir, miżmuma bi ftit għamla apposta biex il-veduta tal-bajja tibqa' l-uniku żejjen tal-kamra.",
+        "Btieħa ċentrali — mħawla b'siġra taż-żebbuġ waħda — iġġib id-dawl u l-arja mal-pjanta kollha, u tagħti lid-dar ċentru kwiet fejn wieħed jerġa' lura fl-aħħar tal-jum."
+      ]
+    },
+    "de": {
+      "location": "Mellieħa",
+      "type": "Wohnbau, Neubau",
+      "scope": "Neubau, Innenausbau",
+      "tagline": "Ein Neubau, eingebettet in einen Kalksteinhang oberhalb der Bucht von Mellieħa.",
+      "narrative": [
+        "Das Grundstück fällt steil zur Bucht hin ab, daher ist das Haus als Abfolge gestufter Terrassen angelegt statt als einzelner Baukörper — jede Ebene öffnet sich zu einem eigenen Gartenstreifen oder einer Steinterrasse, sodass kein Raum zweimal dasselbe Licht verlangt.",
+        "Die Außenwände sind aus lokalem Globigerina-Kalkstein gebaut, naturbelassen, damit sie wie die älteren Häuser der Umgebung verwittern. Innen setzt sich dieselbe Wärme in Holzarbeiten und kalkgetünchtem Putz fort, bewusst zurückhaltend, damit der Blick über die Bucht der einzige Schmuck des Raums bleibt.",
+        "Ein zentraler Innenhof — mit einem einzelnen Olivenbaum bepflanzt — bringt Licht und Luft durch den Grundriss und gibt dem Haus eine ruhige Mitte, zu der man am Ende des Tages zurückkehrt."
+      ]
+    }
   }
 }

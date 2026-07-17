@@ -9,19 +9,59 @@
   "size": "140 m²",
   "scope": "Commercial Fit-out",
   "featured": false,
-  "cardImage": { "id": "card-studio-ta-sannat", "alt": "A small commercial studio fit-out in Ta' Sannat, Gozo" },
+  "cardImage": {
+    "id": "card-studio-ta-sannat",
+    "alt": "A small commercial studio fit-out in Ta' Sannat, Gozo"
+  },
   "detail": {
     "tagline": "A small pottery studio and shop front, fitted into a converted farm building.",
-    "heroImage": { "id": "hero-studio-ta-sannat", "alt": "Studio Ta' Sannat shopfront, Gozo" },
+    "heroImage": {
+      "id": "hero-studio-ta-sannat",
+      "alt": "Studio Ta' Sannat shopfront, Gozo"
+    },
     "narrative": [
       "A retired farm building on the edge of Ta' Sannat was converted into a working studio and small retail front for a local ceramicist. The brief asked for daylight over display lighting wherever possible.",
       "A single large opening was cut into the north wall — the only orientation that gave even light through the day — glazed in slim steel to keep the original stone reveal visible from both sides.",
       "Fixtures throughout are simple and adjustable, built to be reconfigured as the maker's own work changes over time."
     ],
     "gallery": [
-      { "id": "gal-studio-ta-sannat-1", "alt": "Studio interior with north-light window", "wide": true },
-      { "id": "gal-studio-ta-sannat-2", "alt": "Retail display fixtures" },
-      { "id": "gal-studio-ta-sannat-3", "alt": "Original stone reveal detail" }
+      {
+        "id": "gal-studio-ta-sannat-1",
+        "alt": "Studio interior with north-light window",
+        "wide": true
+      },
+      {
+        "id": "gal-studio-ta-sannat-2",
+        "alt": "Retail display fixtures"
+      },
+      {
+        "id": "gal-studio-ta-sannat-3",
+        "alt": "Original stone reveal detail"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "location": "Għawdex",
+      "type": "Kummerċjali",
+      "scope": "Tagħmir Kummerċjali",
+      "tagline": "Studio żgħir tal-fuħħar u faċċata ta' ħanut, imwaħħla f'bini ta' razzett konvertit.",
+      "narrative": [
+        "Bini ta' razzett mhux aktar użat fit-tarf ta' Ta' Sannat ġie konvertit fi studio tax-xogħol u faċċata żgħira ta' bejgħ għal artiġjan tal-fuħħar lokali. Il-brief talab dawl naturali minflok dawl tal-wiri kull fejn possibbli.",
+        "Ftuħ kbir wieħed inqata' fil-ħajt tat-tramuntana — l-unika direzzjoni li tat dawl indaqs tul il-jum — ivvetrat b'azzar irqiq biex iż-żigatura tal-ġebla oriġinali tibqa' viżibbli miż-żewġ naħat.",
+        "It-tagħmir kollu huwa sempliċi u aġġustabbli, mibni biex jerġa' jiġi kkonfigurat hekk kif ix-xogħol tal-artiġjan jinbidel maż-żmien."
+      ]
+    },
+    "de": {
+      "location": "Gozo",
+      "type": "Gewerbe",
+      "scope": "Gewerblicher Innenausbau",
+      "tagline": "Ein kleines Keramikstudio und Ladenfront, eingebaut in ein umgenutztes Bauernhaus.",
+      "narrative": [
+        "Ein nicht mehr genutztes Bauernhaus am Rand von Ta' Sannat wurde in ein Arbeitsstudio und eine kleine Verkaufsfront für eine lokale Keramikerin umgewandelt. Der Auftrag verlangte, wo immer möglich, Tageslicht statt Ausstellungsbeleuchtung.",
+        "Eine einzige große Öffnung wurde in die Nordwand geschnitten — die einzige Ausrichtung, die gleichmäßiges Licht über den Tag gab — verglast mit schlankem Stahl, damit die ursprüngliche Steinlaibung von beiden Seiten sichtbar bleibt.",
+        "Die Einrichtung ist durchgehend einfach und verstellbar, gebaut, um neu konfiguriert zu werden, sobald sich die Arbeit der Keramikerin mit der Zeit verändert."
+      ]
+    }
   }
 }

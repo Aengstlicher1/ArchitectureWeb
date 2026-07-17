@@ -1,0 +1,62 @@
+{
+  "nav.work": "Arbeiten",
+  "nav.studio": "Studio",
+  "nav.services": "Leistungen",
+  "nav.contact": "Kontakt",
+  "nav.start": "Projekt starten",
+  "nav.search_aria": "Website durchsuchen (⌘/Strg + Leertaste)",
+  "search.placeholder": "Projekte, Leistungen, Seiten durchsuchen…",
+
+  "hero.line1": "Architektur, gezeichnet",
+  "hero.line2": "im Licht des Kalksteins.",
+  "hero.sub": "[COMPANY NAME] ist ein Boutique-Studio in Mosta, das Häuser, Anbauten und Interieurs auf Malta und Gozo entwirft — ruhige, durchdachte Arbeit aus dem eigenen Stein und der Sonne der Insel.",
+
+  "statement.text": "Wir entwerfen vom Grundstück aus — dem Einfall des Lichts, dem Verlauf einer Wand, dem Gefühl, das ein Raum um sechs Uhr abends haben soll — bevor wir von einem Briefing aus entwerfen.",
+
+  "work.kicker": "Ausgewählte Arbeiten",
+  "work.viewall": "Alle Projekte ansehen",
+
+  "services.kicker": "Was wir tun",
+  "services.residential.title": "Wohnbau-Design",
+  "services.residential.copy": "Neubauten und Anbauten auf Malta und Gozo, vom Grundstück aus entworfen — Ausrichtung, Ausblicke und der Charakter des umgebenden Straßenbilds prägen jeden Grundriss, bevor ein einziger Raum entsteht.",
+  "services.renovations.title": "Renovierungen",
+  "services.renovations.copy": "Sorgfältige Arbeit an Stadthäusern und älteren Immobilien: erkennen, was ein Gebäude bewahren möchte, und dem Rest Raum geben, um ruhiger und nützlicher zu werden.",
+  "services.interior.title": "Innenarchitektur",
+  "services.interior.copy": "Grundriss, Licht, Schreinerarbeiten und Material bis ins letzte Detail — Interieurs, die gemeinsam mit der Architektur entworfen werden, nicht nachträglich aufgesetzt.",
+  "services.planning.title": "Planung & Genehmigungen",
+  "services.planning.copy": "Full-Service-Begleitung durch den Genehmigungsprozess, von der Konzepteinreichung bis zur finalen Baugenehmigung — ein Ansprechpartner vom ersten Entwurf bis zum Bau.",
+
+  "split.kicker": "Ansässig in Mosta",
+  "split.title": "Ein Studio, verwurzelt in der Insel, auf der es baut",
+  "split.note": "Unser Studio liegt in Mosta, nur kurz von jedem Standort entfernt, an dem wir auf Malta und Gozo arbeiten. Die Nähe zum Grund bedeutet weniger Überraschungen vor Ort und ein besseres Gespür dafür, wie ein Haus in seiner Straße stehen soll. Unter der Leitung von Sean begleitet unser vierköpfiges Team jedes Projekt vom ersten Entwurf bis zur finalen Genehmigung.",
+  "split.badge1": "Mitglied der Kamra tal-Periti",
+  "split.badge2": "4-köpfiges Studio",
+
+  "contact.title": "Planen Sie etwas auf Malta oder Gozo?",
+  "contact.sub": "Erzählen Sie uns von Ihrem Grundstück und Ihren Vorstellungen. Wir übernehmen jeweils nur eine kleine Anzahl von Projekten, daher ist ein frühes Gespräch der beste Ausgangspunkt.",
+  "contact.cta2": "Beratung buchen",
+
+  "footer.contact": "Kontakt",
+  "footer.hours": "Öffnungszeiten",
+  "footer.hours1": "Mo–Fr, 9:00–17:00",
+  "footer.hours2": "Nach Vereinbarung, samstags",
+  "footer.follow": "Folgen",
+
+  "work.title": "Alle Projekte",
+  "work.search_placeholder": "Nach Name oder Ort suchen…",
+  "work.empty": "Keine Projekte gefunden — bitte andere Suche oder Filter versuchen.",
+
+  "filters.all_styles": "Alle Stile",
+  "filters.residential": "Wohnbau",
+  "filters.renovation": "Renovierung",
+  "filters.interior": "Innenarchitektur",
+  "filters.commercial": "Gewerbe",
+  "filters.all_locations": "Alle Orte",
+
+  "pd.back": "← Ausgewählte Arbeiten",
+  "pd.location": "Standort",
+  "pd.year": "Jahr",
+  "pd.size": "Größe",
+  "pd.scope": "Leistung",
+  "pd.next": "Nächstes Projekt"
+}

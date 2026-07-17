@@ -1,0 +1,62 @@
+{
+  "nav.work": "Work",
+  "nav.studio": "Studio",
+  "nav.services": "Services",
+  "nav.contact": "Contact",
+  "nav.start": "Start a project",
+  "nav.search_aria": "Search the site (⌘/Ctrl + Space)",
+  "search.placeholder": "Search projects, services, pages…",
+
+  "hero.line1": "Architecture, drawn",
+  "hero.line2": "from limestone light.",
+  "hero.sub": "[COMPANY NAME] is a boutique studio in Mosta designing homes, additions and interiors across Malta and Gozo — quiet, considered work built from the island's own stone and sun.",
+
+  "statement.text": "We design from the site outward — the fall of light, the run of a wall, the way a room should feel at six in the evening — before we design from a brief.",
+
+  "work.kicker": "Selected work",
+  "work.viewall": "View all projects",
+
+  "services.kicker": "What we do",
+  "services.residential.title": "Residential Design",
+  "services.residential.copy": "New homes and additions across Malta and Gozo, designed from the plot outward — orientation, views and the character of the surrounding streetscape shape every plan before a single room does.",
+  "services.renovations.title": "Renovations",
+  "services.renovations.copy": "Careful work on townhouses and older properties: reading what a building wants to keep, and giving the rest room to become something quieter and more useful.",
+  "services.interior.title": "Interior Architecture",
+  "services.interior.copy": "Layout, light, joinery and material carried through to the last detail — interiors designed alongside the architecture, not applied to it afterwards.",
+  "services.planning.title": "Planning & Permits",
+  "services.planning.copy": "Full-service delivery through the Planning Authority process, from concept submission to final permit — one point of contact from first sketch to build.",
+
+  "split.kicker": "Based in Mosta",
+  "split.title": "A studio rooted in the island it builds on",
+  "split.note": "Our studio sits in Mosta, a short drive from every site we work on across Malta and Gozo. Working close to the ground means fewer surprises on site, and a better sense of how a house should sit in its street. Led by Sean, our team of four carries every project from first sketch to final permit.",
+  "split.badge1": "Kamra tal-Periti Member",
+  "split.badge2": "4-person studio",
+
+  "contact.title": "Planning something in Malta or Gozo?",
+  "contact.sub": "Tell us about the site and what you have in mind. We take on a small number of projects at a time, so an early conversation is the best place to start.",
+  "contact.cta2": "Book a consultation",
+
+  "footer.contact": "Contact",
+  "footer.hours": "Hours",
+  "footer.hours1": "Mon–Fri, 9:00–17:00",
+  "footer.hours2": "By appointment, Saturdays",
+  "footer.follow": "Follow",
+
+  "work.title": "All projects",
+  "work.search_placeholder": "Search by name or location…",
+  "work.empty": "No projects match — try a different search or filter.",
+
+  "filters.all_styles": "All styles",
+  "filters.residential": "Residential",
+  "filters.renovation": "Renovation",
+  "filters.interior": "Interior Architecture",
+  "filters.commercial": "Commercial",
+  "filters.all_locations": "All locations",
+
+  "pd.back": "← Selected work",
+  "pd.location": "Location",
+  "pd.year": "Year",
+  "pd.size": "Size",
+  "pd.scope": "Scope",
+  "pd.next": "Next project"
+}

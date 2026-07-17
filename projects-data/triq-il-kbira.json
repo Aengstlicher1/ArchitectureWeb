@@ -9,20 +9,61 @@
   "size": "180 m²",
   "scope": "Interior Architecture",
   "featured": true,
-  "cardImage": { "id": "card-triq-il-kbira", "alt": "Triq il-Kbira townhouse interior in Sliema" },
+  "cardImage": {
+    "id": "card-triq-il-kbira",
+    "alt": "Triq il-Kbira townhouse interior in Sliema"
+  },
   "detail": {
     "tagline": "A Sliema townhouse re-planned from the inside, the shell left untouched.",
-    "heroImage": { "id": "hero-triq-il-kbira", "alt": "Triq il-Kbira living space, Sliema" },
+    "heroImage": {
+      "id": "hero-triq-il-kbira",
+      "alt": "Triq il-Kbira living space, Sliema"
+    },
     "narrative": [
       "The brief was interior-only: the facade and structure stayed exactly as they were, and the work happened entirely in plan and material. Walls came down between the kitchen and the old parlour to make one long room that runs the depth of the house.",
       "Joinery in brushed oak absorbs storage, media and a small home office into a single run along one wall, so the rest of the room stays uncluttered. A traditional Maltese balcony at the front was restored rather than replaced.",
       "Furnishing was kept close to the studio's own palette — natural fibres, stone and timber — so the interior reads as continuous with the building's age rather than in contrast to it."
     ],
     "gallery": [
-      { "id": "gal-triq-il-kbira-1", "alt": "Kitchen and living room, single volume", "wide": true },
-      { "id": "gal-triq-il-kbira-2", "alt": "Joinery wall in brushed oak" },
-      { "id": "gal-triq-il-kbira-3", "alt": "Restored traditional balcony" },
-      { "id": "gal-triq-il-kbira-4", "alt": "Bedroom detail" }
+      {
+        "id": "gal-triq-il-kbira-1",
+        "alt": "Kitchen and living room, single volume",
+        "wide": true
+      },
+      {
+        "id": "gal-triq-il-kbira-2",
+        "alt": "Joinery wall in brushed oak"
+      },
+      {
+        "id": "gal-triq-il-kbira-3",
+        "alt": "Restored traditional balcony"
+      },
+      {
+        "id": "gal-triq-il-kbira-4",
+        "alt": "Bedroom detail"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "type": "Arkitettura tal-Interjuri",
+      "scope": "Arkitettura tal-Interjuri",
+      "tagline": "Dar fi Sliema mmudellata mill-ġdid minn ġewwa, bil-qoxra mħollija bla mittiefsa.",
+      "narrative": [
+        "Il-brief kien interjur biss: il-faċċata u l-istruttura baqgħu eżatt kif kienu, u x-xogħol sar kollu fil-pjanta u l-materjal. Il-ħitan tniżżlu bejn il-kċina u s-salott il-qadim biex saret kamra twila waħda li tgħaddi mal-fond tad-dar.",
+        "L-injam tal-ballut miksi jassorbi l-ħażna, il-midja u uffiċċju żgħir f'linja waħda tul ħajt wieħed, biex il-bqija tal-kamra tibqa' bla tgergir. Gallarija Maltija tradizzjonali quddiem ġiet restawrata minflok mibdula.",
+        "L-għamara nżammet qrib il-paletta tal-istudjo stess — fibri naturali, ġebla u injam — biex l-interjur jidher kontinwu mal-età tal-bini minflok f'kuntrast miegħu."
+      ]
+    },
+    "de": {
+      "type": "Innenarchitektur",
+      "scope": "Innenarchitektur",
+      "tagline": "Ein Stadthaus in Sliema, von innen neu geplant, die Hülle unangetastet gelassen.",
+      "narrative": [
+        "Der Auftrag betraf nur das Innere: Fassade und Struktur blieben genau wie sie waren, die Arbeit fand ganz in Grundriss und Material statt. Wände zwischen Küche und altem Salon wurden entfernt, um einen langen Raum zu schaffen, der sich über die gesamte Tiefe des Hauses erstreckt.",
+        "Schreinerarbeiten aus gebürsteter Eiche nehmen Stauraum, Medien und ein kleines Arbeitszimmer in einer einzigen Wandflucht auf, sodass der restliche Raum unverstellt bleibt. Ein traditioneller maltesischer Balkon an der Front wurde restauriert statt ersetzt.",
+        "Die Möblierung blieb nah an der eigenen Palette des Studios — Naturfasern, Stein und Holz —, sodass sich das Interieur als Fortsetzung des Alters des Gebäudes liest statt als Kontrast dazu."
+      ]
+    }
   }
 }

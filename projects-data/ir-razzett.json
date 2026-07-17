@@ -9,19 +9,57 @@
   "size": "320 m²",
   "scope": "Renovation, Additions",
   "featured": false,
-  "cardImage": { "id": "card-ir-razzett", "alt": "A renovated farmhouse in Mosta" },
+  "cardImage": {
+    "id": "card-ir-razzett",
+    "alt": "A renovated farmhouse in Mosta"
+  },
   "detail": {
     "tagline": "A working farmhouse renovated for a young family, in two phases over three years.",
-    "heroImage": { "id": "hero-ir-razzett", "alt": "Ir-Razzett farmhouse exterior, Mosta" },
+    "heroImage": {
+      "id": "hero-ir-razzett",
+      "alt": "Ir-Razzett farmhouse exterior, Mosta"
+    },
     "narrative": [
       "The studio's first Mosta commission: a partially derelict farmhouse renovated in two phases so the family could move in early and finish the outbuildings as budget allowed.",
       "Phase one stabilised and reopened the original three-room core, replacing a failed flat roof with a traditional pitched form in local tile. Phase two converted the old animal stores into a garden-facing living wing.",
       "Materials throughout were sourced from Malta and Gozo wherever possible, keeping the renovation legible as one continuous building rather than an old house with a new one attached."
     ],
     "gallery": [
-      { "id": "gal-ir-razzett-1", "alt": "Farmhouse living wing addition", "wide": true },
-      { "id": "gal-ir-razzett-2", "alt": "Original stone core, restored" },
-      { "id": "gal-ir-razzett-3", "alt": "Garden-facing addition detail" }
+      {
+        "id": "gal-ir-razzett-1",
+        "alt": "Farmhouse living wing addition",
+        "wide": true
+      },
+      {
+        "id": "gal-ir-razzett-2",
+        "alt": "Original stone core, restored"
+      },
+      {
+        "id": "gal-ir-razzett-3",
+        "alt": "Garden-facing addition detail"
+      }
     ]
+  },
+  "i18n": {
+    "mt": {
+      "type": "Rinnovazzjoni",
+      "scope": "Rinnovazzjoni, Żidiet",
+      "tagline": "Razzett tax-xogħol rinnovat għal familja żagħżugħa, f'żewġ fażijiet tul tliet snin.",
+      "narrative": [
+        "L-ewwel xogħol tal-istudjo fil-Mosta: razzett parzjalment abbandunat rinnovat f'żewġ fażijiet biex il-familja setgħet tidħol kmieni u ttemm il-binjiet ta' barra skont il-baġit.",
+        "L-ewwel fażi stabbilixxiet u fetħet mill-ġdid il-qofol oriġinali ta' tliet kmamar, u biddlet saqaf ċatt fallut b'forma tradizzjonali mmejla bil-madum lokali. It-tieni fażi biddlet il-mħażen tal-annimali l-qodma f'ġwiħ tal-għajxien li jħares lejn il-ġnien.",
+        "Il-materjali kollha ġew meħuda minn Malta u Għawdex kull fejn possibbli, biex ir-rinnovazzjoni tinqara bħala bini kontinwu wieħed minflok dar antika b'waħda ġdida mwaħħla magħha."
+      ]
+    },
+    "de": {
+      "type": "Renovierung",
+      "scope": "Renovierung, Anbauten",
+      "tagline": "Ein Bauernhaus, in zwei Phasen über drei Jahre für eine junge Familie renoviert.",
+      "narrative": [
+        "Der erste Auftrag des Studios in Mosta: ein teilweise verfallenes Bauernhaus, in zwei Phasen renoviert, damit die Familie früh einziehen und die Nebengebäude nach Budget fertigstellen konnte.",
+        "Phase eins stabilisierte und öffnete den ursprünglichen Drei-Zimmer-Kern wieder, ein undichtes Flachdach wurde durch eine traditionelle Satteldachform mit lokalen Ziegeln ersetzt. Phase zwei wandelte die alten Tierställe in einen gartenseitigen Wohnflügel um.",
+        "Materialien wurden, wo immer möglich, aus Malta und Gozo bezogen, damit die Renovierung als ein durchgehendes Gebäude lesbar bleibt statt als altes Haus mit neuem Anbau."
+      ]
+    }
   }
 }
