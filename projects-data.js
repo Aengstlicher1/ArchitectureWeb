@@ -31,21 +31,69 @@ async function wireLangSelector() {
     return cache[code];
   }
 
-  const select = document.createElement('select');
-  select.id = 'lang-select';
-  select.setAttribute('aria-label', 'Choose language');
-  select.style.cssText = 'font-family:var(--font-body); font-weight:600; font-size:13px; letter-spacing:0.02em; border:1px solid var(--color-divider); background:var(--color-bg); color:var(--color-text); border-radius:999px; padding:6px 28px 6px 14px; cursor:pointer; appearance:none; -webkit-appearance:none; background-image:url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23201e1d" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>\'); background-repeat:no-repeat; background-position:right 8px center;';
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative;';
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.id = 'lang-toggle-btn';
+  btn.className = 'btn btn-icon';
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Switch language');
+  btn.title = 'Switch language';
+  btn.style.cssText = 'font-family:var(--font-body); font-weight:600; font-size:13px; letter-spacing:0.02em; width:auto; padding:0 10px; display:flex; align-items:center; gap:5px;';
+  btn.innerHTML = '<span id="lang-current-label"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+  const panel = document.createElement('div');
+  panel.id = 'lang-panel';
+  panel.className = 'lang-panel';
+  panel.style.display = 'none';
+  const outer = document.createElement('div');
+  outer.className = 'lang-panel-outer';
+  const inner = document.createElement('div');
+  inner.className = 'lang-panel-inner';
+  inner.setAttribute('role', 'listbox');
   manifest.forEach(l => {
-    const opt = document.createElement('option');
-    opt.value = l.code;
+    const opt = document.createElement('button');
+    opt.type = 'button';
+    opt.className = 'lang-option';
+    opt.dataset.code = l.code;
+    opt.setAttribute('role', 'option');
     opt.textContent = l.label;
-    select.appendChild(opt);
+    inner.appendChild(opt);
   });
-  mount.replaceWith(select);
+  outer.appendChild(inner);
+  panel.appendChild(outer);
+
+  wrap.appendChild(btn);
+  wrap.appendChild(panel);
+  mount.replaceWith(wrap);
+
+  const labelEl = btn.querySelector('#lang-current-label');
+  let closeTimer = null;
+  function openPanel() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    if (panel.classList.contains('open')) return;
+    panel.style.display = 'block';
+    void panel.offsetHeight;
+    requestAnimationFrame(() => panel.classList.add('open'));
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel() {
+    if (!panel.classList.contains('open')) return;
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    closeTimer = setTimeout(() => { panel.style.display = 'none'; closeTimer = null; }, 420);
+  }
+  btn.addEventListener('click', () => { panel.classList.contains('open') ? closePanel() : openPanel(); });
+  document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) closePanel(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
 
   async function apply(lang) {
     document.documentElement.setAttribute('lang', lang);
-    select.value = lang;
+    const entry = manifest.find(l => l.code === lang) || manifest[0];
+    labelEl.textContent = entry ? entry.code.toUpperCase() : lang.toUpperCase();
+    inner.querySelectorAll('.lang-option').forEach(o => o.setAttribute('aria-selected', String(o.dataset.code === lang)));
     const dict = lang === 'en' ? enDict : await getDict(lang);
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
@@ -62,10 +110,13 @@ async function wireLangSelector() {
   let lang = currentLang();
   await apply(lang);
   window.__applyLangTranslation = apply;
-  select.addEventListener('change', () => {
-    lang = select.value;
-    localStorage.setItem('site-lang', lang);
-    apply(lang);
+  inner.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      lang = opt.dataset.code;
+      localStorage.setItem('site-lang', lang);
+      apply(lang);
+      closePanel();
+    });
   });
 }
 
@@ -117,6 +168,7 @@ function wireSiteSearch(projects) {
     if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
     if (overlay.classList.contains('open')) return;
     overlay.style.display = 'flex';
+    void overlay.offsetHeight;
     requestAnimationFrame(() => overlay.classList.add('open'));
     renderResults('');
     input.value = '';
@@ -163,6 +215,81 @@ function wireSiteSearch(projects) {
   });
 }
 
+// Shared top nav + sidebar + search overlay + floating buttons, injected into
+// #chrome-nav / #chrome-float mount points. Edit this once; every page updates.
+function siteChromeLinks() {
+  const onIndex = /(^|\/)index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+  return {
+    work: onIndex ? '#work' : 'work.html',
+    studio: onIndex ? '#studio' : 'index.html#studio',
+    services: onIndex ? '#services' : 'index.html#services',
+    contact: onIndex ? '#contact' : 'index.html#contact',
+  };
+}
+
+function renderSiteChrome() {
+  const navMount = document.getElementById('chrome-nav');
+  const floatMount = document.getElementById('chrome-float');
+  if (navMount) {
+    const L = siteChromeLinks();
+    navMount.innerHTML = `
+<nav class="nav">
+  <button type="button" class="btn btn-icon" id="menu-toggle-btn" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar" title="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+  </button>
+  <a href="index.html" class="nav-brand" style="text-decoration:none;color:inherit;">[COMPANY NAME]</a>
+  <div class="nav-right">
+    <button type="button" class="btn btn-icon" id="nav-search-btn" data-i18n-placeholder="nav.search_aria" aria-label="Search the site (⌘/Ctrl + Space)" title="Search (⌘/Ctrl + Space)" aria-haspopup="dialog">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+    <button type="button" class="btn btn-icon" id="lang-toggle-btn" aria-label="Switch language" title="Switch language" style="font-family:var(--font-body); font-weight:600; font-size:13px; letter-spacing:0.02em;">EN</button>
+  </div>
+</nav>
+<div id="sidebar-backdrop"></div>
+<aside id="sidebar" aria-hidden="true">
+  <div class="sidebar-head">
+    <span class="sidebar-brand">[COMPANY NAME]</span>
+    <button type="button" class="btn btn-icon" id="sidebar-close-btn" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <nav class="sidebar-links">
+    <a href="${L.work}" data-i18n="nav.work">Work</a>
+    <a href="${L.studio}" data-i18n="nav.studio">Studio</a>
+    <a href="${L.services}" data-i18n="nav.services">Services</a>
+    <a href="${L.contact}" data-i18n="nav.contact">Contact</a>
+  </nav>
+</aside>
+<div id="search-overlay" style="display:none; position:fixed; inset:0; z-index:200; background:color-mix(in srgb, var(--color-neutral-900) 55%, transparent); backdrop-filter:blur(2px); align-items:flex-start; justify-content:center;">
+ <div class="search-outer" style="width:100%; max-width:640px; margin:12vh 0 0;">
+  <div class="search-inner" style="background:var(--color-bg); border-radius:var(--radius-lg); padding:var(--space-3); box-shadow:var(--shadow-lg);">
+    <input type="search" id="site-search-input" placeholder="Search projects, services, pages…" data-i18n-placeholder="search.placeholder" aria-label="Search the site"
+      style="width:100%; box-sizing:border-box; font-size:18px; font-family:var(--font-body); padding:12px 14px; border:1px solid var(--color-divider); border-radius:var(--radius-md); background:var(--color-surface); color:var(--color-text);" />
+    <div id="site-search-results" style="margin-top:var(--half); max-height:50vh; overflow-y:auto; scrollbar-width:none;"></div>
+  </div>
+ </div>
+</div>`;
+    // Nav is now position:fixed (always visible), so give the page a spacer
+    // equal to its rendered height and keep it in sync on resize.
+    function syncNavSpacer() {
+      const navEl = navMount.querySelector('.nav');
+      if (navEl) document.body.style.paddingTop = navEl.offsetHeight + 'px';
+    }
+    syncNavSpacer();
+    window.addEventListener('resize', syncNavSpacer);
+  }
+
+  const onHomePage = /(^|\/)index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+
+  if (floatMount) {
+    floatMount.innerHTML = `
+${onHomePage ? '<a href="start-project.html" id="float-start" class="btn btn-primary" data-i18n="nav.start">Start a project</a>' : ''}
+<button type="button" id="back-to-top" aria-label="Back to top" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>`;
+  }
+}
+
 function projectCardHTML(p, lang) {
   lang = lang || currentLang();
   return `
@@ -171,3 +298,42 @@ function projectCardHTML(p, lang) {
       <div class="proj-meta"><div><h3 class="proj-title">${p.name}</h3><p class="proj-loc">${pf(p, lang, 'location')} · ${pf(p, lang, 'type')}</p></div><span class="tag tag-accent">${p.year}</span></div>
     </a>`;
 }
+
+// Floating "back to top" button, shared across all pages: fades/slides in once
+// the user has scrolled past one viewport height, smooth-scrolls to top on click.
+function wireBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  function toggle() { btn.classList.toggle('show', window.scrollY > window.innerHeight * 0.6); }
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Collapsible left sidebar nav, shared across all pages: hamburger toggle,
+// backdrop click, Escape, and closing on any link click all dismiss it.
+function wireSidebar() {
+  const btn = document.getElementById('menu-toggle-btn');
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  const closeBtn = document.getElementById('sidebar-close-btn');
+  if (!btn || !sidebar) return;
+  function open() {
+    sidebar.classList.add('open');
+    backdrop.classList.add('open');
+    sidebar.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  function close() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('open');
+    sidebar.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', () => (sidebar.classList.contains('open') ? close() : open()));
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (backdrop) backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+}
+

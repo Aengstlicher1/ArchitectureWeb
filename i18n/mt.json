@@ -58,5 +58,19 @@
   "pd.year": "Sena",
   "pd.size": "Daqs",
   "pd.scope": "Skop",
-  "pd.next": "Proġett li jmiss"
+  "pd.next": "Proġett li jmiss",
+
+  "start.kicker": "Ibda proġett",
+  "start.title": "Għidilna dwar il-proġett tiegħek",
+  "start.sub": "Aqsam ftit dettalji dwar is-sit u l-viżjoni tiegħek. Inwieġbu kull mistoqsija fi żmien jumejn tax-xogħol.",
+  "start.name": "Isem",
+  "start.email": "Email",
+  "start.phone": "Numru tat-telefon (mhux obbligatorju)",
+  "start.location": "Post tal-proġett",
+  "start.type": "Tip ta' proġett",
+  "start.message": "Għidilna dwar is-sit u x'għandek f'moħħok",
+  "start.submit": "Ibgħat il-mistoqsija",
+  "start.error_email": "Jekk jogħġbok daħħal indirizz email validu.",
+  "start.success_title": "Grazzi",
+  "start.success_body": "Il-mistoqsija tiegħek waslet. Inkunu f'kuntatt fi żmien jumejn tax-xogħol."
 }

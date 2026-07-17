@@ -58,5 +58,19 @@
   "pd.year": "Jahr",
   "pd.size": "Größe",
   "pd.scope": "Leistung",
-  "pd.next": "Nächstes Projekt"
+  "pd.next": "Nächstes Projekt",
+
+  "start.kicker": "Projekt starten",
+  "start.title": "Erzählen Sie uns von Ihrem Projekt",
+  "start.sub": "Teilen Sie uns ein paar Details zu Ihrem Grundstück und Ihrer Vorstellung mit. Wir antworten auf jede Anfrage innerhalb von zwei Werktagen.",
+  "start.name": "Name",
+  "start.email": "E-Mail",
+  "start.phone": "Telefon (optional)",
+  "start.location": "Projektstandort",
+  "start.type": "Projektart",
+  "start.message": "Erzählen Sie uns von Ihrem Grundstück und Ihren Vorstellungen",
+  "start.submit": "Anfrage senden",
+  "start.error_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+  "start.success_title": "Vielen Dank",
+  "start.success_body": "Ihre Anfrage ist eingegangen. Wir melden uns innerhalb von zwei Werktagen."
 }

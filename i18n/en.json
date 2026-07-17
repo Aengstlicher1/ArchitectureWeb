@@ -58,5 +58,19 @@
   "pd.year": "Year",
   "pd.size": "Size",
   "pd.scope": "Scope",
-  "pd.next": "Next project"
+  "pd.next": "Next project",
+
+  "start.kicker": "Start a project",
+  "start.title": "Tell us about your project",
+  "start.sub": "Share a few details about your site and vision. We reply to every enquiry within two working days.",
+  "start.name": "Name",
+  "start.email": "Email",
+  "start.phone": "Phone (optional)",
+  "start.location": "Project location",
+  "start.type": "Project type",
+  "start.message": "Tell us about the site and what you have in mind",
+  "start.submit": "Send enquiry",
+  "start.error_email": "Please enter a valid email address.",
+  "start.success_title": "Thank you",
+  "start.success_body": "Your enquiry has been received. We'll be in touch within two working days."
 }
